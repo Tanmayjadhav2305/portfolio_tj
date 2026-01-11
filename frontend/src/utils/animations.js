@@ -8,17 +8,23 @@ export const initScrollAnimations = () => {
   const animateElements = document.querySelectorAll('.animate-on-scroll');
   
   animateElements.forEach((element) => {
-    gsap.from(element, {
-      scrollTrigger: {
-        trigger: element,
-        start: 'top 80%',
-        toggleActions: 'play none none reverse',
+    gsap.fromTo(element, 
+      {
+        opacity: 0,
+        y: 50,
       },
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      ease: 'power3.out',
-    });
+      {
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+      }
+    );
   });
 };
 
