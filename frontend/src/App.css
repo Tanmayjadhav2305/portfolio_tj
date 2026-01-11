@@ -25,6 +25,9 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   overflow-x: hidden;
+  /* Mobile performance optimizations */
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .App {
@@ -48,14 +51,41 @@ body {
   color: var(--color-text);
   margin-bottom: 20px;
   letter-spacing: -1px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: var(--color-primary);
+  transition: width 0.6s ease;
+}
+
+.section-header:hover .section-title::after {
+  width: 100px;
 }
 
 .section-line {
   width: 80px;
   height: 4px;
-  background: var(--color-primary);
-  margin: 0 auto;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);\n  margin: 0 auto;
   border-radius: 2px;
+  box-shadow: 0 0 20px rgba(10, 228, 72, 0.4);
+  animation: pulse-line 2s ease-in-out infinite;
+}
+
+@keyframes pulse-line {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(10, 228, 72, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(10, 228, 72, 0.8);
+  }
 }
 
 /* Smooth scrolling */
@@ -81,9 +111,26 @@ html {
   background: var(--color-primary-dark);
 }
 
-/* Responsive typography */
+/* Performance optimizations for mobile */
 @media (max-width: 768px) {
   .section-title {
     font-size: 2rem;
+  }
+
+  * {
+    /* Disable expensive animations on mobile for performance */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  /* Reduce motion for better mobile performance */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
