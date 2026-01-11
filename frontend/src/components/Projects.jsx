@@ -8,7 +8,7 @@ const Projects = () => {
       title: 'WhaTok',
       description: 'Modern WhatsApp-like web interface integrating Reels, Map, and Gaming features into a single seamless experience.',
       tech: ['HTML', 'CSS', 'JavaScript'],
-      image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop',
+      image: 'https://images.pexels.com/photos/46924/pexels-photo-46924.jpeg?auto=compress&cs=tinysrgb&w=600',
       liveLink: '#',
       year: '2025'
     },
@@ -16,7 +16,7 @@ const Projects = () => {
       title: 'CNG Queue Tracker',
       description: 'Real-time tracking system for CNG stations using Firebase Realtime Database, displaying live queue updates.',
       tech: ['Firebase', 'JavaScript', 'HTML', 'CSS'],
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+      image: 'https://images.pexels.com/photos/9937650/pexels-photo-9937650.jpeg?auto=compress&cs=tinysrgb&w=600',
       liveLink: '#',
       year: '2025'
     },
@@ -24,7 +24,7 @@ const Projects = () => {
       title: 'Healthcare Hub',
       description: 'Responsive medical web app for online consultations, appointment booking, and record management.',
       tech: ['React', 'JavaScript', 'CSS'],
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop',
+      image: 'https://images.pexels.com/photos/8376277/pexels-photo-8376277.jpeg?auto=compress&cs=tinysrgb&w=600',
       liveLink: '#',
       year: '2025'
     },
@@ -32,7 +32,7 @@ const Projects = () => {
       title: 'Pet Friendly City',
       description: 'Visually appealing web app promoting pet adoption with testimonial carousel and responsive layout.',
       tech: ['HTML', 'CSS', 'JavaScript'],
-      image: 'https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&h=400&fit=crop',
+      image: 'https://images.pexels.com/photos/35558885/pexels-photo-35558885.jpeg?auto=compress&cs=tinysrgb&w=600',
       liveLink: '#',
       year: '2024'
     },
@@ -40,7 +40,7 @@ const Projects = () => {
       title: 'iPhone 14 Dynamic Island Clone',
       description: 'Interactive UI component mimicking Apple\'s Dynamic Island purely with CSS animations and transitions.',
       tech: ['HTML', 'CSS'],
-      image: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&h=400&fit=crop',
+      image: 'https://images.pexels.com/photos/5054355/pexels-photo-5054355.jpeg?auto=compress&cs=tinysrgb&w=600',
       liveLink: '#',
       year: '2024'
     }
@@ -56,9 +56,9 @@ const Projects = () => {
 
         <div className="projects-grid">
           {projects.map((project, idx) => (
-            <div key={idx} className="project-card animate-on-scroll">
+            <div key={idx} className="project-card animate-on-scroll" data-delay={idx * 0.1}>
               <div className="project-image-wrapper">
-                <img src={project.image} alt={project.title} className="project-image" />
+                <img src={project.image} alt={project.title} className="project-image" loading="lazy" />
                 <div className="project-overlay">
                   <a href={project.liveLink} className="project-link" target="_blank" rel="noopener noreferrer">
                     <ExternalLink size={24} />
