@@ -1,0 +1,49 @@
+.custom-cursor {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.hovering {
+  width: 60px;
+  height: 60px;
+  border-color: var(--color-accent);
+  background: rgba(10, 228, 72, 0.1);
+}
+
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+/* Hide default cursor on interactive elements */
+@media (min-width: 768px) {
+  body {
+    cursor: none;
+  }
+
+  a, button, input, textarea, .project-card, .stat-card {
+    cursor: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .custom-cursor,
+  .custom-cursor-dot {
+    display: none;
+  }
+}

@@ -1,7 +1,8 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export const initScrollAnimations = () => {
   // Smooth scroll behavior
@@ -91,23 +92,6 @@ export const initScrollAnimations = () => {
       });
     });
   });
-
-  // Smooth scroll to sections
-  const navLinks = document.querySelectorAll('.nav-link');
-  navLinks.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.textContent.toLowerCase();
-      const targetElement = document.getElementById(targetId);
-      
-      if (targetElement) {
-        gsap.to(window, {
-          duration: 1.2,
-          scrollTo: { y: targetElement, offsetY: 80 },
-          ease: 'power3.inOut',
-        });
-      }
-    });
-  });
 };
 
 export const animateHover = (element, scale = 1.05) => {
@@ -124,4 +108,15 @@ export const animateHoverEnd = (element) => {
     duration: 0.3,
     ease: 'power2.out',
   });
+};
+
+export const smoothScrollTo = (targetId) => {
+  const targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    gsap.to(window, {
+      duration: 1.2,
+      scrollTo: { y: targetElement, offsetY: 80 },
+      ease: 'power3.inOut',
+    });
+  }
 };
